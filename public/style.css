@@ -18,10 +18,57 @@ div.header {
 }
 
 div.main {
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     min-height: 75vh;
     background: #d4f4ff;
+}
+
+div.main div.cardDetailsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.main div.cardDetailsContainer div.inputField, div.main div.cardDetailsContainer div.inputLabel, div.main div.cardDetailsContainer div.collons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+div.main div.cardDetailsContainer div.inputField > input{
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    min-width: 200px;
+}
+
+div.main div.cardDetailsContainer div.inputField > input.error{
+    border: 2px solid red;
+}
+
+div.main div.cardDetailsContainer div.inputLabel > label{
+    margin: 10px;
+    min-width: 100px;
+}
+
+div.main div.cardDetailsContainer div.collons > div{
+    margin: 10px;
+}
+
+div.main div.cardActionsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="button"]{
+    margin: 20px;
+    min-width: 80px;
+    background: lightblue;
 }
 
 div.footer {

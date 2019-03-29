@@ -5,30 +5,43 @@
 <body>
 
     <div class="header">
-        <h1>Header</h1>
+        <h1>Payment Screen</h1>
     </div>
     <div class="main">
-        <div class="cardDetailsContainer">
-            <div class="inputField">
-                <label>Card Number</label>
-                <input name="cardNumber" type="text"/>
-            </div>
-            <div class="inputField">
-                <label>Card Holder Name</label>
-                <input name="cardHolderName" type="text"/>    
-            </div>
-            <div class="inputField">
-                <label>CVV</label>
-                <input name="cvv" type="text"/>
-            </div>
-            <div class="inputField">
-                <label>Expiry Date</label>
-                <input name="expiryDate" type="text"/>
-            </div>
+        <div class="cardConatiner">
+                <div class="cardDetailsContainer">
+                        <div class="inputLabel">
+                            <label>Card Number</label>
+                            <label>Card Holder Name</label>
+                            <label>CVV</label>
+                            <label>Expiry Date</label>
+                        </div>
+                        <div class="collons">
+                            <div>:</div>
+                            <div>:</div>
+                            <div>:</div>
+                            <div>:</div>
+                        </div>
+                        <div class="inputField">
+                            <input name="cardNumber" type="text"/>
+                            <input name="cardHolderName" type="text"/>    
+                            <input name="cvv" type="password"/>
+                            <input name="expiryDate" type="text"/>
+                        </div>
+                    
+                    </div>
+                    <div class="cardActionsContainer">
+                        <div class="buttonReset">
+                            <input name="reset" type="button" value="Reset" disabled/>
+                        </div>
+                        <div class="buttonSubmit">
+                            <input name="submit" type="button" value="Submit" disabled/>
+                        </div>
+                    </div>
         </div>
     </div>
     <div class="footer">
-        <span>Footer</span>
+        <span>copyright @flipkart</span>
     </div>
 
     <script src="index.js"></script>
