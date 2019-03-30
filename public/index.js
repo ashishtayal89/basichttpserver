@@ -10,27 +10,29 @@ let buttons = Object.seal({
     submit: document.getElementsByName("submit")[0],
 })
 
-let formValidity = function(formFieldsObj){
+let form = function(formFieldsObj){
     let validityObj = {};
     for(let key in formFieldsObj){
-        validityObj[key] = false;
+        validityObj[key] = {value:"",validity:false};
     }
     return validityObj;
 }(fieldsRegex);
 
 function canResetForm(){
-    return Object.values(formValidity).includes(true);
+    return Object.values(form).map((value)=>value.validity).includes(true);
 }
 
 function isFormValid(){
-    return !Object.values(formValidity).includes(false);
+    return !Object.values(form).map((value)=>value.validity).includes(false);
 }
 
 function isFieldValid(name,value){
-    console.log(fieldsRegex);
     const fieldValidity = fieldsRegex[name].test(value);
-    formValidity[name] = fieldValidity;
     return fieldValidity;
+}
+
+function updateForm(fieldName,fieldValue,fieldValidity){
+    form[fieldName] = {value:fieldValue,validity:fieldValidity};
 }
 
 function formatFieldForValidity(name,value){
@@ -70,22 +72,23 @@ function formFieldUpdated(ev){
     const pureValue = formatFieldForValidity(field.name,field.value);
     const fieldValidity = isFieldValid(field.name,pureValue);
     const displayValue = formatFieldForDisplay(field.name,field.value);
+    updateForm(field.name,pureValue,fieldValidity);
     updateFieldDisplay(field,fieldValidity,displayValue);
     updateButtonDisplay();
 }
 
 function formButtonClicked(ev){
-    console.log(ev.target.name);
+    console.log(form);
 }
 
 (function(){
     let inputFields = document.getElementsByTagName("input");
     Array.prototype.forEach.call(inputFields,input => {
         switch(input.type){
-            case "text" : input.onkeyup = formFieldUpdated;
-            case "password" : input.onkeyup  = formFieldUpdated;
+            case "text" : input.onkeyup = formFieldUpdated; break;
+            case "password" : input.onkeyup  = formFieldUpdated; break;
+            case "button" : input.onclick = formButtonClicked; break;
             default : null;
         }
     });
 })();
-
