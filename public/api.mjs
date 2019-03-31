@@ -1,12 +1,24 @@
 
-import products from './products.mjs';
 
-class Api{
-    getProducts(start,required){
-        return new Promise((resolve)=>{
-            setTimeout(()=>{
-                resolve(products.slice(start,start+required));
-            },2000);
+
+function getResponse(url) {
+    return fetch(url)
+        .then(function (response) {
+            return response.json();
+        }).then(function(myJson) {
+            return myJson
+          });
+}
+
+class Api {
+    getProducts() {
+        return new Promise((resolve) => {
+            resolve(getResponse("https://api.myjson.com/bins/16jqpu"));
+        })
+    }
+    getFilters() {
+        return new Promise((resolve) => {
+            resolve(getResponse("https://api.myjson.com/bins/rnwle"));
         })
     }
 }

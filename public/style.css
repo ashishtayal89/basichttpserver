@@ -18,12 +18,86 @@ div.header {
 }
 
 div.main {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
     min-height: 75vh;
     background: #d4f4ff;
 }
 
-div.main div.cardDetailsContainer{
+div.main div.productContainer {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 10px;
+    background: white;
+}
+
+div.main div.productContainer div.products{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%
+}
+
+div.main div.productContainer div.product{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-height: 100px;
+    margin: 1%;
+}
+
+div.main div.productContainer div.product div.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+div.main div.productContainer div.product div.image img{
+    max-width: 200px;
+    max-height: 110px;
+}
+
+
+div.main div.productContainer div.product div.title{
+    height: 10%;
+}
+div.main div.productContainer div.product div.rating{
+    height: 10%;
+}
+div.main div.productContainer div.product div.price{
+    height: 10%;
+}
+
+div.main div.filterContainer {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 400px;
+    margin: 10px;
+    padding: 20px;
+    background: white;
+}
+
+div.main div.filterContainer div.priceFilterConatiner, div.main div.filterContainer div.brandContainer, div.main div.filterContainer div.colorContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+div.main div.filterContainer div.colorContainer div.colors{
+    display: flex;
+    flex-direction: column;
+}
+
+div.footer {
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
+
+
+/* div.main div.cardDetailsContainer{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -69,10 +143,4 @@ input[type="button"]{
     margin: 20px;
     min-width: 80px;
     background: lightblue;
-}
-
-div.footer {
-    justify-content: center;
-    align-items: center;
-    min-height: 10vh;
-}
+} */

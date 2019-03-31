@@ -5,39 +5,51 @@
 <body>
 
     <div class="header">
-        <h1>Payment Screen</h1>
+        <h1>Search Page</h1>
     </div>
     <div class="main">
-        <div class="cardConatiner">
-                <div class="cardDetailsContainer">
-                        <div class="inputLabel">
-                            <label>Card Number</label>
-                            <label>Card Holder Name</label>
-                            <label>CVV</label>
-                            <label>Expiry Date</label>
-                        </div>
-                        <div class="collons">
-                            <div>:</div>
-                            <div>:</div>
-                            <div>:</div>
-                            <div>:</div>
-                        </div>
-                        <div class="inputField">
-                            <input name="cardNumber" type="text"/>
-                            <input name="cardHolderName" type="text"/>    
-                            <input name="cvv" type="password"/>
-                            <input name="expiryDate" type="text"/>
-                        </div>
-                    
+        <div class="filterContainer">
+            <div>Filters</div>
+            <div class="priceFilterConatiner">
+                <span>PRICE</span>
+                <div class="priceRange">
+                    <select id="minPriceRange" name="minPrice">
+                        
+                    </select>
+                    to
+                    <select id="maxPriceRange" name="minPrice">
+                        <!-- <option value="500">500</option>
+                        <option value="500">500</option>
+                        <option value="500">500</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="brandContainer">
+                <span>BRAND</span>
+                <div class="brands">
+                    <input type="text" placeholder="Search Brand" />
+                </div>
+            </div>
+            <div class="colorContainer">
+                <span>COLOR</span>
+                <div id="colors" class="colors">
+                    <!-- <label><input type="checkbox" value="red" />Red</label> -->
+                </div>
+            </div>
+        </div>
+        <div class="productContainer">
+            <div class="sortCondition">
+            </div>
+            <div id="products" class="products">
+                <!-- <div class="product">
+                    <div class="image">
+                        <img src="https://rukminim1.flixcart.com/image/312/312/j752nww0/shoe/h/5/e/1055-8-provogue-royal-blue-original-imaexgcfmfghaf8f.jpeg?q=70"/>
                     </div>
-                    <div class="cardActionsContainer">
-                        <div class="buttonReset">
-                            <input name="reset" type="button" value="Reset" disabled/>
-                        </div>
-                        <div class="buttonSubmit">
-                            <input name="submit" type="button" value="Submit" disabled/>
-                        </div>
-                    </div>
+                    <div class="title">Product1</div>
+                    <div class="rating">5</div>
+                    <div class="price">2323</div>
+                </div> -->
+            </div>
         </div>
     </div>
     <div class="footer">
