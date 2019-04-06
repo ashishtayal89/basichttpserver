@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./node_modules/http-server/bin/http-server -p 3001"
+    "start": "node ./node_modules/http-server/bin/http-server --experimental-modules -p 3001"
   },
   "author": "Ashish Tayal",
   "license": "MIT",
