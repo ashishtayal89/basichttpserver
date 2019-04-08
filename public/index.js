@@ -1,49 +1,92 @@
-let array = [10,9,8,7,6];
+// Create object to iterator
 
-// [10,9,8,6,7]
-// [10,9,6,8,7]
-// [10,6,9,8,7]
-// [6,10,9,8,7]
-// [6,10,9,7,8]
-// [6,10,7,9,8]
-// [6,7,10,9,8]
-// [6,7,10,8,9]
-// [6,7,8,10,9]
-// [6,7,8,9,10]
-function selectionSort(newArray){
-    let iterations = 0;
-    array = newArray || array;
-    for(let i=0;i<array.length-1;i++){
-        let min_index = i;
-        for(let j=i+1;j<array.length;j++){
-            iterations++;
-            if(array[min_index]>array[j]){
-                min_index = j;
-            }
-        }
-        let temp = array[i];
-        array[i] = array[min_index];
-        array[min_index] = temp;
+class ObjectIterator{
+    constructor(order){
+        this.order = order;
     }
-    console.log(`iterations ${iterations}`);
-    return array;
-}
-
-/* Above selectionSort is better than selectionSort2 since in that we only need to do O(n) swaps whereas in this we do O(n^2) swaps which
-    is inefficient for memory write process */
-function selectionSort2(newArray){
-    let iterations = 0;
-    array = newArray || array;
-    for(let i=0;i<array.length;i++){
-        for(let j=array.length-1;j>i;j--){
-            iterations++;
-            if(array[j-1]>array[j]){
-                let temp = array[j];
-                array[j] = array[j-1];
-                array[j-1] = temp;
+    [Symbol.iterator](){
+        let pointer = 0;
+        return {
+            next : () => {
+                return {
+                    value : this.order[pointer],
+                    done : pointer++ === this.order.length
+                }
             }
         }
     }
-    console.log(`iterations ${iterations}`);
-    return array;
 }
+
+var order = new ObjectIterator([2,3,5,1,6]);
+for(let value of order){
+    console.log(value);
+}
+
+
+// Inheritance
+
+// 1. functional
+
+function Parent(){
+}
+
+function Child(){
+}
+
+Child.prototype = Object.create(Parent.prototype,{});
+Child.prototype.constructor = Child;
+
+var childObj = new Child();
+console.log(childObj.constructor);
+
+// 2. Object
+
+var Parent = {
+    init : function (lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+}
+
+var Child = Object.create(Parent);
+
+Child = {
+    init : function (firstname,lastname) {
+        Parent.init.call(this,lastname);
+        this.firstname = firstname;
+        return this;
+    }
+}
+
+var childObj = Object.create(Child).init("Ashish","Tayal");
+console.log(childObj);
+console.log(childObj.hasOwnProperty("lastname"));
+
+// 3. Class
+
+class Parent{
+}
+class Child extends Parent{
+}
+var childObj = new Child();
+
+
+// Async Programming
+
+// 1. Using Callbacks
+
+function asyncFunc(){
+    setTimeout(()=>{
+        setTimeout(()=>{
+            setTimeout(()=>{
+
+            },1000)
+        },1000)
+    },1000)
+}
+
+// 2. Promise
+
+var myPromise = new Promise((resolve)=>setTimeout(()=>resolve,1000))
+                    .then(()=>setTimeout(()=>{},1000))
+                    .then(()=>setTimeout(()=>{},1000));
