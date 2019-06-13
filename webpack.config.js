@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 
@@ -83,24 +82,13 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './index.html',
 			title: 'DigitalE1',
-			// hash: true,
-			// xhtml: true,
-			// favicon: "./src/assets/favicon.ico",
 			meta: {
 				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no',
 			}
 		}),
-		new webpack.ProvidePlugin({
-			$: "jquery",
-			jQuery: "jquery"
-		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 		}),
-		// new PreloadWebpackPlugin({
-		// 	rel: 'preload',
-		// 	include: 'allAssets' // i know it's bad but need to load all the resources to have a good UX for
-		// })
 	],
 	optimization: {
 		minimizer: [new UglifyJSPlugin()],
